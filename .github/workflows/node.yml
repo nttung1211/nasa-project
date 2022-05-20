@@ -12,7 +12,7 @@ jobs:
       - name: Use NodeJS version 16
         uses: actions/setup-node@v2
         with:
-          node_version: '16'
+          node-version: '16'
       - run: npm i
       - run: npm run build --prefix client
 
