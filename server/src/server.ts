@@ -2,8 +2,8 @@ require('dotenv').config();
 import http from 'http';
 const app = require('./app');
 
-const { loadLaunchesData } = require('./models/launches.model');
 const { loadPlanetData } = require('./models/planets.model');
+const { loadXSpaceLaunches } = require('./models/launches.model');
 const { mongoConnect } = require('./utils/mongo');
 
 const server = http.createServer(app); // express app is just a listener function (or a middleware that we can add on top of the built-in http server)
@@ -11,7 +11,7 @@ const server = http.createServer(app); // express app is just a listener functio
 const startServer = async () => {
   await mongoConnect();
   await loadPlanetData();
-  // await loadLaunchesData();
+  // await loadXSpaceLaunches();
 
   const PORT = process.env.PORT;
   server.listen(PORT, () => {

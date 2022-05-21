@@ -142,5 +142,5 @@ module.exports = {
   deleteLaunch,
   updateLaunch,
   abortLaunch,
-  loadLaunchesData: loadXSpaceLaunches,
+  loadXSpaceLaunches,
 };
