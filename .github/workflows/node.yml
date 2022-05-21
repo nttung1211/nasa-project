@@ -1,18 +1,24 @@
 name: Nasa project CI
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request: 
-    branches: [ main ]
+    branches: [main]
 jobs:
   build:
+    env: 
+      CI: true # with IC env, watch mode when test will be disable
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x] # will use the latest version of node 14 and 16 to build in parallel 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use NodeJS version 16
+      - name: Use NodeJS version ${{matrix.node-version}}
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
-      - run: npm install
+          # node-version: '16'
+          node-version: ${{matrix.node-version}}
+      - run: npm i
       - run: npm run build --prefix client
-
+      - run: npm test
