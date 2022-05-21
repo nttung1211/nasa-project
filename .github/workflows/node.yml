@@ -8,7 +8,7 @@ jobs:
   build:
     env: 
       CI: true # with IC env, watch mode when test will be disable
-      # MONGO_URI: mongodb://localhost/nasa
+      MONGO_URI: mongodb://localhost/nasa
     strategy:
       matrix:
         node-version: [16.x] # will use the latest version of node 14 and 16 to build in parallel 
