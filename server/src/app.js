@@ -6,7 +6,7 @@ const morgan = require('morgan'); // logger
 const CONFIG = require('../constants/config');
 const NotFoundError = require('./errors/NotFoundError');
 const apiV1 = require('./api');
-const errorHandler = require('./errors/ErrorHandler');
+const { errorHandler, clientErrorHandler } = require('./errors/ErrorHandler');
 
 
 const app = express();
@@ -29,6 +29,6 @@ app.use('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
-app.use(errorHandler);
+app.use(errorHandler, clientErrorHandler);
 
 module.exports = app;
